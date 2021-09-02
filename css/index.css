@@ -12,3 +12,9 @@ table, th, td {
 th{
     width: 10%;
 }
+
+#recycleBin {
+    width: 20px; 
+    height: 20px;
+    margin-left: 45%;
+}
