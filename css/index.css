@@ -1,0 +1,14 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#tabelAngajati{
+    width: 90%;
+    margin-left: 4rem;
+    margin-top: 9rem;
+}
+
+th{
+    width: 10%;
+}
