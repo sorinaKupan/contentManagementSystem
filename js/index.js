@@ -25,6 +25,11 @@ function loadData(){
 }
 
 function Add_Employee(){
+    var months = [
+        "ianuarie", "februarie", "martie", "aprilie", "mai",
+        "iunie", "iulie", "august", "septembrie", "octombrie",
+        "noiembrie", "decembrie"
+    ];
     var arrayEmployee = [];
     var nume = document.getElementById("nume").value;
     var prenume = document.getElementById("prenume").value;
@@ -44,6 +49,7 @@ function Add_Employee(){
             if(email==""){
                 alert("Completati email-ul");
             }else{
+                if(validateEmail(email)){
                     arrayEmployee[2] = email;
                     if(sex=="-"){
                        alert("Alegeti sex-ul");
@@ -64,7 +70,9 @@ function Add_Employee(){
                            var year = age_dt.getUTCFullYear();  
                            var age = Math.abs(year - 1970); 
                            if(age>=16){
-                              arrayEmployee[4] = data_nasterii;
+                              var month = data_nasterii.split("-")[1];
+                              var birthDate = data_nasterii.split("-")[2] + " " + months[month.split("0")[1]-1] + " " + data_nasterii.split("-")[0];
+                              arrayEmployee[4] = birthDate;
                               if(poza_angajat==""){
                                 alert("Alegeti poza");
                                 }else{
@@ -96,8 +104,17 @@ function Add_Employee(){
                             }
                         }
                     }
+                }else{
+                    alert("Introduceti o adresa de email valida!");
+                }
             }
         }
     }
 }
+
+function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
