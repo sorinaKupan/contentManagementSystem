@@ -71,21 +71,30 @@ table, th, td {
     border-collapse: collapse;
 }
 
+td, th{
+    width: 1rem;
+}
+
 th {
     background-color: #6B7AA1;
 }
 #tabelAngajati{
-    width: 90%;
+    width: 50%;
     margin-left: 4rem;
     margin-top: 5rem;
-}
-
-th{
-    width: 10%;
 }
 
 .recycleBin {
     width: 20px; 
     height: 20px;
     margin-left: 45%;
+}
+
+#icon-name{
+    display: flex;
+    padding: 10px;
+}
+
+.td-paddings {
+    margin-left: 4rem;
 }
