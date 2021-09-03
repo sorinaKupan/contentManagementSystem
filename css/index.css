@@ -1,6 +1,10 @@
+body {
+    background-color: #E7E0C9;
+}
 #search-bar {
-    margin-left: 30rem;
+    margin-left: 35%;
     margin-top: 2rem;
+    width: 60%;
 }
 
 #form {
@@ -26,10 +30,19 @@ button {
  }
 
 #adaugareAngajat {
-    margin-left: 10rem;
+    background-color: #C1CFC0;
+    margin-left: 20%;
     margin-top: 3rem;
-    width: 53%;
+    width: 58%;
     border: 1px solid black;
+}
+
+.inputAngajat {
+    margin-right: 3%;
+}
+
+#sex, #dataNasterii, #poza {
+    margin-top: 5%;
 }
 
 #formAdaugare, h3{
@@ -38,17 +51,30 @@ button {
 
 h3{
     padding-top: 5px;
+    text-decoration: underline;
+    margin-left: 19rem;
+    font-size: 20px;
+}
+
+#submitButton {
+    border: 1px solid black;
+    background-color: #6B7AA1;
+    margin-top: 1rem;
+    margin-left: 45%;
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 2px solid #11324D;
     border-collapse: collapse;
 }
 
+th {
+    background-color: #6B7AA1;
+}
 #tabelAngajati{
     width: 90%;
     margin-left: 4rem;
-    margin-top: 9rem;
+    margin-top: 5rem;
 }
 
 th{
