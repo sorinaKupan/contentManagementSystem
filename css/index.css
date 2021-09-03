@@ -25,6 +25,21 @@ button {
      padding: 5px;
  }
 
+#adaugareAngajat {
+    margin-left: 10rem;
+    margin-top: 3rem;
+    width: 53%;
+    border: 1px solid black;
+}
+
+#formAdaugare, h3{
+    padding: 10px;
+}
+
+h3{
+    padding-top: 5px;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
