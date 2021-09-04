@@ -79,8 +79,8 @@ th {
     background-color: #6B7AA1;
 }
 #tabelAngajati{
-    width: 50%;
-    margin-left: 4rem;
+    width: 68%;
+    margin-left: 15rem;
     margin-top: 5rem;
 }
 
@@ -92,9 +92,17 @@ th {
 
 #icon-name{
     display: flex;
-    padding: 10px;
+    align-items: center;
+    padding-left: 10px;
 }
 
 .td-paddings {
-    margin-left: 4rem;
+    padding-left: 2rem;
+}
+
+#imageEmployee {
+    margin-right: 10%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }

@@ -1,33 +1,34 @@
-var j=1;
+
 function loadData(){
-    var archive = [];
     var table = document.getElementById("tabelAngajati");
-    for (var i = 0; i<localStorage.length; i++) {
-        archive[i] = localStorage.getItem(localStorage.key(i));
-        var arrayEmployee =  archive[i].split(",");
-        var row= table.insertRow(j);
-        var cellNume = row.insertCell();
-        cellNume.setAttribute("class", "td-paddings");
-        cellNume.innerHTML = `<div id="icon-name"><div><img src="./images/${arrayEmployee[5]}" /></div><div><p> ${arrayEmployee[0]}</p></div></div>`;
-        var cellPrenume = row.insertCell();
-        cellPrenume.setAttribute("class", "td-paddings");
-        cellPrenume.innerHTML = arrayEmployee[1];
-        var cellEmail = row.insertCell();
-        cellEmail.setAttribute("class", "td-paddings");
-        cellEmail.innerHTML = arrayEmployee[2];
-        var cellSex = row.insertCell();
-        cellSex.setAttribute("class", "td-paddings");
-        cellSex.innerHTML = arrayEmployee[3];
-        var cellDataNasterii = row.insertCell();
-        cellDataNasterii.setAttribute("class", "td-paddings");
-        cellDataNasterii.innerHTML = arrayEmployee[4];
-        var cellDelete = row.insertCell();
-        cellDelete.innerHTML = '<img src="./images/recycle-bin.png" class="recycleBin"/>';
-        j++;
-    }
+        var j=1;
+        var archive = [];
+        for (var i = 0; i<localStorage.length; i++) {
+            archive[i] = localStorage.getItem(localStorage.key(i));
+            var arrayEmployee =  archive[i].split(",");
+            var row= table.insertRow(j);
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${arrayEmployee[5]}"  id="imageEmployee"/><p id="nameEmployee"> ${arrayEmployee[0]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = arrayEmployee[1];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = arrayEmployee[2];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = arrayEmployee[3];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            cellDataNasterii.innerHTML = arrayEmployee[4];
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = '<img src="./images/recycle-bin.png" class="recycleBin"/>';
+            j++;
+        }
 }
 
-function Add_Employee(){
+function Add_Employee(event){
     var months = [
         "ianuarie", "februarie", "martie", "aprilie", "mai",
         "iunie", "iulie", "august", "septembrie", "octombrie",
@@ -43,19 +44,23 @@ function Add_Employee(){
     var validari=0;
     if(nume==""){
         alert("Completati numele");
+        event.preventDefault();
     }else{
         arrayEmployee[0] = nume;
         if(prenume==""){
             alert("Completati prenumele");
+            event.preventDefault();
         }else{
             arrayEmployee[1] = prenume;
             if(email==""){
                 alert("Completati email-ul");
+                event.preventDefault();
             }else{
                 if(validateEmail(email)){
                     arrayEmployee[2] = email;
                     if(sex=="-"){
                        alert("Alegeti sex-ul");
+                       event.preventDefault();
                     }else{
                        var sexValue;
                        if(sex == "f"){
@@ -66,6 +71,7 @@ function Add_Employee(){
                         arrayEmployee[3] = sexValue;
                         if(data_nasterii==""){
                           alert("Alegeti data nasterii");
+                          event.preventDefault();
                         }else{
                            var birthDate = new Date(data_nasterii);
                            var month_diff = Date.now() - birthDate.getTime();  
@@ -83,12 +89,12 @@ function Add_Employee(){
                                     localStorage.setItem(`${nume}`, arrayEmployee); 
                                     var archive;
                                     var table = document.getElementById("tabelAngajati");
-                                        archive= localStorage.getItem(localStorage.getItem(`${nume}`));
+                                        archive= localStorage.getItem(`${nume}`);
                                         var arrayEmployee =  archive.split(",");
                                         var row= table.insertRow(localStorage.length+1);
                                         var cellNume = row.insertCell();
                                         cellNume.setAttribute("class", "td-paddings");
-                                        cellNume.innerHTML = `<div id="icon-name"><div><img src="./images/${arrayEmployee[5]}" /></div><div><p> ${arrayEmployee[0]}</p></div></div>`;
+                                        cellNume.innerHTML = `<div id="icon-name"><img src="./images/${arrayEmployee[5]}" id="imageEmployee"/><p id="nameEmployee"> ${arrayEmployee[0]}</p></div>`;
                                         var cellPrenume = row.insertCell();
                                         cellPrenume.setAttribute("class", "td-paddings");
                                         cellPrenume.innerHTML = arrayEmployee[1];
@@ -107,15 +113,53 @@ function Add_Employee(){
                                 }
                             }else{
                                 alert("Introduceti o data de nastere valida");
+                                event.preventDefault();
                             }
                         }
                     }
                 }else{
                     alert("Introduceti o adresa de email valida!");
+                    event.preventDefault();
                 }
             }
         }
     }
+}
+
+function filterSearchBar(event){
+    var archive = [];
+    var searchString = document.getElementById("query").value;
+    var table = document.getElementById("tabelAngajati");
+    for (var i = 0; i < table.childNodes[1].childElementCount; i++) {
+        table.deleteRow(1);
+    }
+    var j=1;
+    for (var i = 0; i<localStorage.length; i++) {
+        archive[i] = localStorage.getItem(localStorage.key(i));
+        if(archive[i].match(searchString)){
+            var arrayEmployee =  archive[i].split(",");
+            var row= table.insertRow(j);
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${arrayEmployee[5]}"  id="imageEmployee"/><p id="nameEmployee"> ${arrayEmployee[0]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = arrayEmployee[1];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = arrayEmployee[2];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = arrayEmployee[3];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            cellDataNasterii.innerHTML = arrayEmployee[4];
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = '<img src="./images/recycle-bin.png" class="recycleBin"/>';
+            j++;
+        }
+    }
+    event.preventDefault();
 }
 
 function validateEmail(email) 
