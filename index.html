@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="css\index.css">
         <script src = "js\index.js" type = "text/javascript"></script>
     </head>
-    <body onload="return loadData();">
+    <body onload="loadData()">
         <div id="header"></div>
         <div id="body">
         <div id="search-bar">
@@ -36,6 +36,29 @@
                 <button type="submit" id="submitButton" onclick="return Add_Employee(event)">Adauga</button>
             </form>
         </div>
+    <div style="display: flex;">
+        <div id="sortare" style="display: flex;">
+            <h3>Sortare:</h3>
+            <form>
+                <select style="margin-top: 30%;">
+                    <option>-</option>
+                    <option>Nume</option>
+                    <option>Data nasterii</option>
+                </select>
+            </form>
+        </div>
+        <div id="filtrare" style="display: flex;">
+            <h3>Filtrare:</h3>
+            <form>
+                <select style="margin-top: 30%;">
+                    <option>-</option>
+                    <option>Sex</option>
+                    <option>Data nasterii</option>
+                    <option>Poza</option>
+                </select>
+            </form>
+        </div>
+    </div>
             <table id="tabelAngajati">
                 <tr>
                     <th>Nume</th>
