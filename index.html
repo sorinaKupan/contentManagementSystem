@@ -15,28 +15,32 @@
             </form>
         </div>
         <div id="adaugareAngajat">
-            <h3>Adauga un angajat</h3>
+            <h3 id="titluAdauga">Adauga un angajat</h3>
             <form id="formAdaugare">
-                <label for="nume">Nume:</label>
-                <input type="text" id="nume" class="inputAngajat">
-                <label for="prenume">Prenume:</label>
-                <input type="text" id="prenume" class="inputAngajat">
-                <label for="email">Email:</label>
-                <input type="text" id="email" class="inputAngajat"><br>
-                <label for="sex">Sex:</label>
+                <div id="div1">
+                <div class="inputDiv"><label for="nume">Nume:</label>
+                <input type="text" id="nume" class="inputAngajat"></div>
+                <div class="inputDiv"><label for="prenume">Prenume:</label>
+                <input type="text" id="prenume" class="inputAngajat"></div>
+                <div class="inputDiv"><label for="email">Email:</label>
+                <input type="text" id="email" class="inputAngajat"></div>
+                </div>
+                <div id="div2">
+                <div class="inputDiv inputDown" ><label for="sex" id="labelSex">Sex:</label>
                 <select id="sex" class="inputAngajat">
                     <option value="-" selected>-</option>
                     <option value="m">masculin</option>
                     <option value="f">feminin</option>
-                </select>
-                <label for="dataNasterii">Data nasterii:</label>
-                <input type="date" id="dataNasterii" class="inputAngajat">
-                <label for="poza">Poza angajat:</label>
-                <input type="file" id="poza" class="inputAngajat">
+                </select></div>
+                <div class="inputDiv inputDown"><label for="dataNasterii" id="labelDataNasterii">Data nasterii:</label>
+                <input type="date" id="dataNasterii" class="inputAngajat"></div>
+                <div class="inputDiv inputDown"><label for="poza" id="labelPoza">Poza angajat:</label>
+                <input type="file" id="poza" class="inputAngajat"></div>
+            </div>
                 <button type="submit" id="submitButton" onclick="return Add_Employee(event)">Adauga</button>
             </form>
         </div>
-    <div style="display: flex;">
+    <div style="display: flex;" id="sortFilter">
         <div id="sortare" style="display: flex;">
             <h3>Sortare:</h3>
             <form>

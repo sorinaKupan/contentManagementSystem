@@ -181,8 +181,8 @@ function sort(listSelect, event){
     if(listSelect.value=="nume"){
         var archive = [];
         var table = document.getElementById("tabelAngajati");
-        for (var i = 0; i < table.childNodes[1].childElementCount; i++) {
-            table.deleteRow(1);
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) {
+            table.deleteRow(i);
         }
         var j=1;
         for (var i = 0; i<localStorage.length; i++) {
@@ -218,8 +218,8 @@ function sort(listSelect, event){
     }else if(listSelect.value=="data-nasterii"){
         var archive = [];
         var table = document.getElementById("tabelAngajati");
-        for (var i = 0; i < table.childNodes[1].childElementCount; i++) {
-            table.deleteRow(1);
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) {
+            table.deleteRow(i);
         }
         var j=1;
         var archiveKeys =[];
@@ -254,5 +254,12 @@ function sort(listSelect, event){
             j++;
         }
         event.preventDefault();
+    }else{
+        var archive = [];
+        var table = document.getElementById("tabelAngajati");
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) {
+            table.deleteRow(i);
+        }
+        return loadData();
     }
 }

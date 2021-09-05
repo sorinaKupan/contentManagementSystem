@@ -34,9 +34,10 @@ button {
     background-color: #C1CFC0;
     margin-left: 20%;
     margin-top: 3rem;
-    width: 58%;
+    width: 55%;
     border: 1px solid black;
 }
+
 
 .inputAngajat {
     margin-right: 3%;
@@ -53,8 +54,11 @@ button {
 h3{
     padding-top: 5px;
     text-decoration: underline;
-    margin-left: 19rem;
     font-size: 20px;
+}
+
+#titluAdauga {
+    margin-left: 37%;
 }
 
 #submitButton {
@@ -72,7 +76,7 @@ table, th, td {
 }
 
 td, th{
-    width: 1rem;
+    width: 20%;
 }
 
 th {
@@ -80,7 +84,7 @@ th {
 }
 #tabelAngajati{
     width: 68%;
-    margin-left: 15rem;
+    margin-left: 15%;
     margin-top: 1rem;
 }
 
@@ -97,7 +101,8 @@ th {
 }
 
 .td-paddings {
-    padding-left: 2rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
 }
 
 #imageEmployee {
@@ -106,3 +111,123 @@ th {
     height: 30px;
     border-radius: 50%;
 }
+
+#div1{
+    display: flex;
+}
+#div2{
+    display: flex;
+}
+
+#div1 div{
+    display: flex;
+}
+#div2 div{
+    display: flex;
+}
+
+#sortFilter{
+    margin-left: 35%;
+}
+
+.inputDiv {
+    margin-right: 4%;
+}
+
+#nume, #prenume, #email, #sex, #dataNasterii, #poza{
+    margin-left: 2%;
+}
+
+#email{
+    width: 60%;
+}
+#formAdaugare label{
+    width: 50%;
+}
+
+.inputDown{
+    margin-top: 3%;
+}
+
+#labelPoza, #labelDataNasterii, #labelSex{
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 1200px){
+    .inputDiv {
+        margin-top: 3%;
+    }
+    #div1{
+        display: block;
+    }
+    #div2{
+        display: block;
+    }
+    #sortFilter{
+        margin-left: 30%;
+    }
+    #tabelAngajati{
+        width: 40%;
+        margin-left: 7%;
+    }
+    #email{
+        width: 28%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    #tabelAngajati{
+        width: 30%;
+        margin-left: 1%;
+    }
+    #email{
+        width: 28%;
+    }
+}
+@media screen and (max-width: 800px) {
+    #titluAdauga {
+        margin-left: 30%;
+    }
+    #email{
+        width: 40%;
+    }
+    #sortFilter{
+        margin-left: 20%;
+    }
+    #tabelAngajati{
+        width: 10%;
+        margin-left: 0;
+    }
+    .td-paddings {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
+@media screen and (max-width: 650px) {
+    #search-bar {
+        width: 85%;
+    }
+    #email{
+        width: 50%;
+    }
+    #tabelAngajati{
+        width: 5%;
+    }
+    #adaugareAngajat {
+        margin-left: 25%;
+    }
+    #titluAdauga {
+        margin-left: 20%;
+    }
+    #submitButton{
+        margin-left: 35%;
+    }
+    #titluAdauga {
+        margin-left: 20%;
+    }
+    #sortFilter{
+        margin-left: 15%;
+    }
+}
+
