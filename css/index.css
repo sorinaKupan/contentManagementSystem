@@ -38,7 +38,13 @@ button {
     border: 1px solid black;
 }
 
+#sortare, #filtrare{
+    display: flex;
+}
 
+#selectSort{
+    margin-top: 30%;
+}
 .inputAngajat {
     margin-right: 3%;
 }
@@ -128,6 +134,7 @@ th {
 
 #sortFilter{
     margin-left: 35%;
+    display: flex;
 }
 
 .inputDiv {

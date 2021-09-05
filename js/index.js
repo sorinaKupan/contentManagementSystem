@@ -131,8 +131,8 @@ function filterSearchBar(event){
     var archive = [];
     var searchString = document.getElementById("query").value;
     var table = document.getElementById("tabelAngajati");
-    for (var i = 0; i < table.childNodes[1].childElementCount; i++) {
-        table.deleteRow(1);
+    for (var i = table.childNodes[1].childElementCount-1; i >0; i--) {
+        table.deleteRow(i);
     }
     var j=1;
     for (var i = 0; i<localStorage.length; i++) {
