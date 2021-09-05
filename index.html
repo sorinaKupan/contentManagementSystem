@@ -40,10 +40,10 @@
         <div id="sortare" style="display: flex;">
             <h3>Sortare:</h3>
             <form>
-                <select style="margin-top: 30%;">
-                    <option>-</option>
-                    <option>Nume</option>
-                    <option>Data nasterii</option>
+                <select style="margin-top: 30%;" onchange="return sort(this)">
+                    <option value="-" >-</option>
+                    <option value="nume">Nume</option>
+                    <option value="data-nasterii">Data nasterii</option>
                 </select>
             </form>
         </div>
