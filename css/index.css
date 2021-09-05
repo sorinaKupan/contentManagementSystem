@@ -15,20 +15,21 @@ body {
     display: flex;
     background-color: white;
 }
+
+button {
+    all: unset;
+}
+
+#imgSearch {
+    padding: 5px;
+}
+
 #query {
     width: 100%;
     height: 2rem;
     all: unset;
     margin-left: 2%;
 }
-
-button {
-    all: unset;
- }
-
- #imgSearch {
-     padding: 5px;
- }
 
 #adaugareAngajat {
     background-color: #C1CFC0;
@@ -38,22 +39,7 @@ button {
     border: 1px solid black;
 }
 
-#sortare, #filtrare{
-    display: flex;
-}
-
-#selectSort{
-    margin-top: 30%;
-}
-.inputAngajat {
-    margin-right: 3%;
-}
-
-#sex, #dataNasterii, #poza {
-    margin-top: 5%;
-}
-
-#formAdaugare, h3{
+#formAdaugare, h3 {
     padding: 10px;
 }
 
@@ -67,6 +53,54 @@ h3{
     margin-left: 37%;
 }
 
+#div1 {
+    display: flex;
+}
+
+#div2 {
+    display: flex;
+}
+
+#div1 div {
+    display: flex;
+}
+
+#div2 div {
+    display: flex;
+}
+
+.inputDiv {
+    margin-right: 4%;
+}
+
+.inputDown {
+    margin-top: 3%;
+}
+
+.inputAngajat {
+    margin-right: 3%;
+}
+
+#nume, #prenume, #email, #sex, #dataNasterii, #poza {
+    margin-left: 2%;
+}
+
+#sex, #dataNasterii, #poza {
+    margin-top: 5%;
+}
+
+#email {
+    width: 60%;
+}
+
+#formAdaugare label{
+    width: 50%;
+}
+
+#labelPoza, #labelDataNasterii, #labelSex {
+    margin-top: 5%;
+}
+
 #submitButton {
     border: 1px solid black;
     background-color: #6B7AA1;
@@ -76,34 +110,36 @@ h3{
     border-radius: 10px;
 }
 
+#sortFilter {
+    margin-left: 35%;
+    display: flex;
+}
+
+#sortare, #filtrare {
+    display: flex;
+}
+
+#selectSort {
+    margin-top: 30%;
+}
+
 table, th, td {
     border: 2px solid #11324D;
     border-collapse: collapse;
 }
 
-td, th{
-    width: 20%;
-}
-
-th {
-    background-color: #6B7AA1;
-}
 #tabelAngajati{
     width: 68%;
     margin-left: 15%;
     margin-top: 1rem;
 }
 
-.recycleBin {
-    width: 20px; 
-    height: 20px;
-    margin-left: 45%;
+td, th {
+    width: 20%;
 }
 
-#icon-name{
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
+th {
+    background-color: #6B7AA1;
 }
 
 .td-paddings {
@@ -118,123 +154,105 @@ th {
     border-radius: 50%;
 }
 
-#div1{
+#icon-name {
     display: flex;
-}
-#div2{
-    display: flex;
-}
-
-#div1 div{
-    display: flex;
-}
-#div2 div{
-    display: flex;
+    align-items: center;
+    padding-left: 10px;
 }
 
-#sortFilter{
-    margin-left: 35%;
-    display: flex;
-}
-
-.inputDiv {
-    margin-right: 4%;
-}
-
-#nume, #prenume, #email, #sex, #dataNasterii, #poza{
-    margin-left: 2%;
-}
-
-#email{
-    width: 60%;
-}
-#formAdaugare label{
-    width: 50%;
-}
-
-.inputDown{
-    margin-top: 3%;
-}
-
-#labelPoza, #labelDataNasterii, #labelSex{
-    margin-top: 5%;
+.recycleBin {
+    width: 20px; 
+    height: 20px;
+    margin-left: 45%;
 }
 
 @media screen and (max-width: 1200px){
+    #div1 {
+        display: block;
+    }
+
+    #div2 {
+        display: block;
+    }
+
     .inputDiv {
         margin-top: 3%;
     }
-    #div1{
-        display: block;
+
+    #email {
+        width: 28%;
     }
-    #div2{
-        display: block;
-    }
-    #sortFilter{
+
+    #sortFilter {
         margin-left: 30%;
     }
-    #tabelAngajati{
+
+    #tabelAngajati {
         width: 40%;
         margin-left: 7%;
-    }
-    #email{
-        width: 28%;
     }
 }
 
 @media screen and (max-width: 900px){
-    #tabelAngajati{
+    #email {
+        width: 28%;
+    }
+
+    #tabelAngajati {
         width: 30%;
         margin-left: 1%;
-    }
-    #email{
-        width: 28%;
     }
 }
 @media screen and (max-width: 800px) {
     #titluAdauga {
         margin-left: 30%;
     }
-    #email{
+
+    #email {
         width: 40%;
     }
-    #sortFilter{
-        margin-left: 20%;
-    }
-    #tabelAngajati{
-        width: 10%;
-        margin-left: 0;
-    }
+
     .td-paddings {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    
+
+    #sortFilter {
+        margin-left: 20%;
+    }
+
+    #tabelAngajati {
+        width: 10%;
+        margin-left: 0;
+    }
 }
 @media screen and (max-width: 650px) {
     #search-bar {
         width: 85%;
     }
-    #email{
-        width: 50%;
-    }
-    #tabelAngajati{
-        width: 5%;
-    }
+
     #adaugareAngajat {
         margin-left: 25%;
     }
+    
     #titluAdauga {
         margin-left: 20%;
     }
-    #submitButton{
+
+    #email {
+        width: 50%;
+    }
+
+    #submitButton {
         margin-left: 35%;
     }
-    #titluAdauga {
-        margin-left: 20%;
-    }
-    #sortFilter{
+
+    #sortFilter {
         margin-left: 15%;
+    }
+
+    #tabelAngajati {
+        width: 5%;
     }
 }
 
