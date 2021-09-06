@@ -105,11 +105,6 @@ function Add_Employee(event)
                             if(age>=16)
                             {
                                 arrayEmployee[4] = data_nasterii;
-                                if(poza_angajat=="")
-                                {
-                                    alert("Alegeti poza");
-                                }else
-                                {
                                     arrayEmployee[5] = poza_angajat.split("\\")[2];
                                     localStorage.setItem(`${nume}`, arrayEmployee); 
                                     var archive;
@@ -146,7 +141,6 @@ function Add_Employee(event)
                                     var cellDelete = row.insertCell();
                                     cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event) id="${arrayEmployee[0]}"/>`;
                                     j++;
-                                }
                             }else
                             {
                                 alert("Introduceti o data de nastere valida");
