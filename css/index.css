@@ -93,6 +93,10 @@ h3{
     width: 60%;
 }
 
+#dataNasterii {
+    width: 100%;
+}
+
 #formAdaugare label{
     width: 50%;
 }
@@ -183,6 +187,10 @@ th {
         width: 28%;
     }
 
+    #dataNasterii {
+        width: 30%;
+    }
+
     #sortFilter {
         margin-left: 27%;
     }
@@ -196,6 +204,10 @@ th {
 @media screen and (max-width: 900px){
     #email {
         width: 28%;
+    }
+
+    #dataNasterii {
+        width: 40%;
     }
 
     #tabelAngajati {
@@ -247,6 +259,10 @@ th {
         width: 50%;
     }
 
+    #dataNasterii {
+        width: 70%;
+    }
+
     #submitButton {
         margin-left: 35%;
     }
@@ -275,6 +291,10 @@ th {
 
     #email, #nume, #prenume {
         width: 50%;
+    }
+
+    #dataNasterii {
+        width: 90%;
     }
 
     #submitButton {
