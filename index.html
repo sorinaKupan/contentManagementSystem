@@ -64,10 +64,17 @@
             <div id="filtrare">
                 <h3>Filtrare:</h3>
                 <form>
-                    <select id="filterBy" style="margin-top: 30%;" onchange="return filter(event)">
+                    <select id="filterBySex" style="margin-top: 30%;" onchange="return filterSex(event)">
                         <option>Sex</option>
                         <option>feminin</option>
                         <option>masculin</option>
+                    </select>
+                </form>
+                <form>
+                    <select id="filterByPicture" style="margin-top: 30%;" onchange="return filterPicture(event)">
+                        <option>Poza</option>
+                        <option>nu are</option>
+                        <option>are</option>
                     </select>
                 </form>
             </div>
