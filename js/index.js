@@ -136,7 +136,7 @@ function filterSearchBar(event){
     var j=1;
     for (var i = 0; i<localStorage.length; i++) {
         archive[i] = localStorage.getItem(localStorage.key(i));
-        if(archive[i].match(searchString)){
+        if(archive[i].toLowerCase().match(searchString)){
             var arrayEmployee =  archive[i].split(",");
             var row= table.insertRow(j);
             row.id = arrayEmployee[0] +"row";

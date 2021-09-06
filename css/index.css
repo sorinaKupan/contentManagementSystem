@@ -184,7 +184,7 @@ th {
     }
 
     #sortFilter {
-        margin-left: 30%;
+        margin-left: 27%;
     }
 
     #tabelAngajati {
@@ -201,6 +201,10 @@ th {
     #tabelAngajati {
         width: 30%;
         margin-left: 1%;
+    }
+
+    #sortFilter {
+        margin-left: 25%;
     }
 }
 @media screen and (max-width: 800px) {
@@ -256,3 +260,32 @@ th {
     }
 }
 
+@media screen and (max-width: 450px) {
+    #search-bar {
+        width: 120%;
+    }
+
+    #adaugareAngajat {
+        margin-left: 30%;
+    }
+    
+    #titluAdauga {
+        margin-left: 20%;
+    }
+
+    #email, #nume, #prenume {
+        width: 50%;
+    }
+
+    #submitButton {
+        margin-left: 35%;
+    }
+
+    #tabelAngajati {
+        width: 5%;
+    }
+
+    #sortFilter {
+        margin-left: 0%;
+    }
+}
