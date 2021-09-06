@@ -9,7 +9,7 @@
         <div id="search-bar">
             <form id="form">
                 <button type="submit"><img id="imgSearch" src="images\search.png" onclick="return filterSearchBar(event);"/></button>
-                <input type="search" id="query" name="q" placeholder="Cauta un angajat">
+                <input type="search" id="query" name="q" placeholder="Cauta un angajat" onchange="return check(event);">
             </form>
         </div>
         <div id="adaugareAngajat">

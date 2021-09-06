@@ -304,3 +304,44 @@ function sort(listSelect, event)
         return loadData();
     }
 }
+
+function check(event){
+    if(document.getElementById("query").value===""){
+        var archive = [];
+        var table = document.getElementById("tabelAngajati");
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+        var j=1;
+        for (var i = 0; i<localStorage.length; i++) 
+        {
+            archive[i] = localStorage.getItem(localStorage.key(i));
+        }
+        for (var i = 0; i<archive.length; i++) 
+        {
+            var arrayEmployee =  archive[i].split(",");
+            var row= table.insertRow(j);
+            row.id = arrayEmployee[0] +"row";
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${arrayEmployee[5]}"  id="imageEmployee"/><p id="nameEmployee"> ${arrayEmployee[0]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = arrayEmployee[1];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = arrayEmployee[2];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = arrayEmployee[3];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            cellDataNasterii.innerHTML = arrayEmployee[4];
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
+            j++;
+            }
+        event.preventDefault();
+    }
+}
