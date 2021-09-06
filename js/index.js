@@ -23,7 +23,7 @@ function loadData(){
         cellDataNasterii.setAttribute("class", "td-paddings");
         cellDataNasterii.innerHTML = arrayEmployee[4];
         var cellDelete = row.insertCell();
-        cellDelete.innerHTML = `<img src="./images/recycle-bin.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
+        cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
         j++;
     }
 }
@@ -108,7 +108,7 @@ function Add_Employee(event){
                                     cellDataNasterii.setAttribute("class", "td-paddings");
                                     cellDataNasterii.innerHTML = arrayEmployee[4];
                                     var cellDelete = row.insertCell();
-                                    cellDelete.innerHTML = `<img src="./images/recycle-bin.png" class="recycleBin" onclick="return deleteEmployee(this,event) id="${arrayEmployee[0]}"/>`;
+                                    cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event) id="${arrayEmployee[0]}"/>`;
                                     j++;
                                 }
                             }else{
@@ -156,7 +156,7 @@ function filterSearchBar(event){
             cellDataNasterii.setAttribute("class", "td-paddings");
             cellDataNasterii.innerHTML = arrayEmployee[4];
             var cellDelete = row.insertCell();
-            cellDelete.innerHTML = `<img src="./images/recycle-bin.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
             j++;
         }
     }
@@ -210,7 +210,7 @@ function sort(listSelect, event){
             cellDataNasterii.setAttribute("class", "td-paddings");
             cellDataNasterii.innerHTML = arrayEmployee[4];
             var cellDelete = row.insertCell();
-            cellDelete.innerHTML = `<img src="./images/recycle-bin.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
             j++;
         }
         event.preventDefault();
@@ -249,7 +249,7 @@ function sort(listSelect, event){
             cellDataNasterii.setAttribute("class", "td-paddings");
             cellDataNasterii.innerHTML = arrayEmployee[4];
             var cellDelete = row.insertCell();
-            cellDelete.innerHTML = `<img src="./images/recycle-bin.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${arrayEmployee[0]}"/>`;
             j++;
             }
         event.preventDefault();

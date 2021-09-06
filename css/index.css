@@ -163,7 +163,7 @@ th {
 .recycleBin {
     width: 20px; 
     height: 20px;
-    margin-left: 45%;
+    margin-left: 35%;
 }
 
 @media screen and (max-width: 1200px){
