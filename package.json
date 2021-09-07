@@ -1,0 +1,25 @@
+{
+  "name": "contentmanagementsystem",
+  "version": "1.0.0",
+  "dependencies": {
+    "firebase": "^9.0.1",
+    "serve": "^12.0.0"
+  },
+  "description": "",
+  "main": "index.html",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sorinaKupan/contentManagementSystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sorinaKupan/contentManagementSystem/issues"
+  },
+  "homepage": "https://github.com/sorinaKupan/contentManagementSystem#readme"
+}

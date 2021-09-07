@@ -613,3 +613,4 @@ function filterPicture(event){
         event.preventDefault();
         }
 }
+
