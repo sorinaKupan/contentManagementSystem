@@ -127,6 +127,15 @@ h3{
     margin-top: 30%;
 }
 
+#filterBySex {
+    margin-top: 35%;
+}
+
+#filterByPicture {
+    margin-top: 43%;
+    margin-left: 10%;
+}
+
 table, th, td {
     border: 2px solid #11324D;
     border-collapse: collapse;
