@@ -31,7 +31,7 @@ async function getAllData(){
     row.id = doc.data()["nume"]+"row";
     var cellNume = row.insertCell();
     cellNume.setAttribute("class", "td-paddings");
-    cellNume.innerHTML = `<div id="icon-name"><img src="./images/search.png"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+    cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
     var cellPrenume = row.insertCell();
     cellPrenume.setAttribute("class", "td-paddings");
     cellPrenume.innerHTML = doc.data()["prenume"];
@@ -76,7 +76,14 @@ document.getElementById("submitButton").addEventListener("click", function(){
     var prenumeV = document.getElementById("prenume").value;
     var emailV = document.getElementById("email").value;
     var sexV = document.getElementById("sex").value;
-    var dataNasteriiV = document.getElementById("dataNasterii").value
+    var dataNasteriiV = document.getElementById("dataNasterii").value;
+    var pozaV = document.getElementById("poza").value;
+    var poza_angajat;
+    if(pozaV!=""){
+        poza_angajat = pozaV.split("\\")[2];
+    }else{
+        poza_angajat = "noPic.jpg";
+    }
     
     if(numeV==""){
         alert("Completati numele");
@@ -114,7 +121,8 @@ document.getElementById("submitButton").addEventListener("click", function(){
                                     prenume: prenumeV,
                                     email: emailV,
                                     sex: sexV,
-                                    data_nasterii: dataNasteriiV
+                                    data_nasterii: dataNasteriiV,
+                                    poza: poza_angajat
                                 });
                                 document.getElementById("nume").value = "";
                                 document.getElementById("prenume").value = "";
@@ -157,7 +165,7 @@ document.getElementById("submitButton").addEventListener("click", function(){
             row.id = doc.data()["nume"]+"row";
             var cellNume = row.insertCell();
             cellNume.setAttribute("class", "td-paddings");
-            cellNume.innerHTML = `<div id="icon-name"><img src="./images/search.png"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
             var cellPrenume = row.insertCell();
             cellPrenume.setAttribute("class", "td-paddings");
             cellPrenume.innerHTML = doc.data()["prenume"];
@@ -201,7 +209,7 @@ document.getElementById("submitButton").addEventListener("click", function(){
         }
           getAllData();
       }
-  })
+  });
 
 //sortare dupa nume
 document.getElementById("selectSort").addEventListener("change", async function(){
@@ -222,7 +230,7 @@ document.getElementById("selectSort").addEventListener("change", async function(
             row.id = doc.data()["nume"]+"row";
             var cellNume = row.insertCell();
             cellNume.setAttribute("class", "td-paddings");
-            cellNume.innerHTML = `<div id="icon-name"><img src="./images/search.png"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
             var cellPrenume = row.insertCell();
             cellPrenume.setAttribute("class", "td-paddings");
             cellPrenume.innerHTML = doc.data()["prenume"];
@@ -250,6 +258,7 @@ document.getElementById("selectSort").addEventListener("change", async function(
   });
     }else if(sortValue.value=="data-nasterii")
     {
+        
     }else
     {
         for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
@@ -258,4 +267,99 @@ document.getElementById("selectSort").addEventListener("change", async function(
         }
         getAllData();
     }
+});
+
+//filtrare dupa sex
+document.getElementById("filterBySex").addEventListener("change", async function(){
+    var table = document.getElementById("tabelAngajati");
+    var filterValue = document.getElementById("filterBySex").value;
+    if(filterValue=="feminin"){
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+        var j=1;
+
+    const q = query(collection(db, "employees"), where("sex", "==", "feminin"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+            var table = document.getElementById("tabelAngajati");
+            var row= table.insertRow(j);
+            row.id = doc.data()["nume"]+"row";
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = doc.data()["prenume"];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = doc.data()["email"];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = doc.data()["sex"];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            var data_nasterii = doc.data()["data_nasterii"];
+            var month = data_nasterii.split("-")[1];
+            var indexMonth;
+            if(month[0]==="0"){
+                indexMonth = month.split("0")[1]-1;
+            }
+            else{
+                indexMonth = month-1;
+            }
+            var birthDate = data_nasterii.split("-")[2] + " " + months[indexMonth] + " " + data_nasterii.split("-")[0];
+            cellDataNasterii.innerHTML = birthDate;
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" id="${doc.data()["nume"]}"/>`;
+  });
+    }else if(filterValue=="masculin"){
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+        var j=1;
+
+    const q = query(collection(db, "employees"), where("sex", "==", "masculin"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+            var table = document.getElementById("tabelAngajati");
+            var row= table.insertRow(j);
+            row.id = doc.data()["nume"]+"row";
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = doc.data()["prenume"];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = doc.data()["email"];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = doc.data()["sex"];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            var data_nasterii = doc.data()["data_nasterii"];
+            var month = data_nasterii.split("-")[1];
+            var indexMonth;
+            if(month[0]==="0"){
+                indexMonth = month.split("0")[1]-1;
+            }
+            else{
+                indexMonth = month-1;
+            }
+            var birthDate = data_nasterii.split("-")[2] + " " + months[indexMonth] + " " + data_nasterii.split("-")[0];
+            cellDataNasterii.innerHTML = birthDate;
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" id="${doc.data()["nume"]}"/>`;
+  });
+}else{
+    for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+    getAllData();
+}
 });
