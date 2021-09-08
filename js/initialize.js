@@ -1,7 +1,6 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
-import {getFirestore, doc, setDoc, getDoc, getDocs, collection} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
+import {getFirestore, doc, setDoc, getDoc, getDocs, collection, deleteDoc} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
 
-var j;
 const firebaseConfig = {
     apiKey: "AIzaSyDHZpy8FJM8lUmUSv_gXqKoPvzpVVeHu5g",
     authDomain: "content-management-syste-52d17.firebaseapp.com",
@@ -14,13 +13,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const querySnapshot = await getDocs(collection(db, "employees"));
 
-function getAllData(){
-    querySnapshot.forEach((doc) => {
+async function getAllData(){
+    var months = [
+        "ianuarie", "februarie", "martie", "aprilie", "mai",
+        "iunie", "iulie", "august", "septembrie", "octombrie",
+        "noiembrie", "decembrie"
+    ];  
+    var j=1;
+    const querySnapshot = await getDocs(collection(db, "employees"));
+     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data()["data_nasterii"]);
       var table = document.getElementById("tabelAngajati");
-      var j=1;
       var row= table.insertRow(j);
       row.id = doc.data()["nume"]+"row";
       var cellNume = row.insertCell();
@@ -38,37 +42,52 @@ function getAllData(){
       var cellDataNasterii = row.insertCell();
       cellDataNasterii.setAttribute("class", "td-paddings");
       var data_nasterii = doc.data()["data_nasterii"];
-      cellDataNasterii.innerHTML = data_nasterii;
+      var month = data_nasterii.split("-")[1];
+      var indexMonth;
+      if(month[0]==="0"){
+          indexMonth = month.split("0")[1]-1;
+      }
+      else{
+          indexMonth = month-1;
+      }
+      var birthDate = data_nasterii.split("-")[2] + " " + months[indexMonth] + " " + data_nasterii.split("-")[0];
+      cellDataNasterii.innerHTML = birthDate;
       var cellDelete = row.insertCell();
-      cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${doc.data()["nume"]}"/>`;
+      cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" id="${doc.data()["nume"]}"/>`;
       j++;
     });
+    var drop = document.getElementsByClassName('recycleBin');
+    for (var i = 0; i < drop.length; i++){
+        drop[i].addEventListener("click", function(){
+            deleteDoc(doc(db, "employees", this.id));
+            document.getElementById(`${this.id}row`).remove();
+    });
+}
 }
 getAllData();
 
 
-  document.getElementById("submitButton").addEventListener("click", function(){
+  document.getElementById("submitButton").addEventListener("click", function(){    
+    var table = document.getElementById("tabelAngajati");
     var numeV = document.getElementById("nume").value;
     var prenumeV = document.getElementById("prenume").value;
     var emailV = document.getElementById("email").value;
     var sexV = document.getElementById("sex").value;
     var dataNasteriiV = document.getElementById("dataNasterii").value
     console.log("Inserted");
-  setDoc(doc(db, "test4", "new"), {
+  setDoc(doc(db, "employees", `${numeV}`), {
       nume: numeV,
       prenume: prenumeV,
       email: emailV,
       sex: sexV,
       data_nasterii: dataNasteriiV
  });
- console.log("Inserted");
-  })
-
-var months = [
-    "ianuarie", "februarie", "martie", "aprilie", "mai",
-    "iunie", "iulie", "august", "septembrie", "octombrie",
-    "noiembrie", "decembrie"
-];
+ for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+    {
+        table.deleteRow(i);
+    }
+    getAllData();
+  });
 
 function validateEmail(email) 
 {
