@@ -3,19 +3,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CMS</title>
         <link rel="stylesheet" href="css\index.css">
-        <script src = "js\index.js" type = "text/javascript"></script>
-        <script src="js/require.js"></script>
+        <script src = "js\initialize.js" type = "module"></script>
     </head>
-    <body onload="loadData()">
+    <body id="body">
         <div id="search-bar">
             <form id="form">
-                <button type="submit"><img id="imgSearch" src="images\search.png" onclick="return filterSearchBar(event);"/></button>
+                <button type="button"><img id="imgSearch" src="images\search.png" onclick="return filterSearchBar(event);"/></button>
                 <input type="search" id="query" name="q" placeholder="Cauta un angajat" onchange="return check(event);">
             </form>
         </div>
         <div id="adaugareAngajat">
             <h3 id="titluAdauga">Adauga un angajat</h3>
-            <form id="formAdaugare">
+            <div id="formAdaugare">
                 <div id="div1">
                     <div class="inputDiv">
                         <label for="nume">Nume:</label>
@@ -48,8 +47,8 @@
                         <input type="file" id="poza" class="inputAngajat">
                     </div>
             </div>
-                <button type="submit" id="submitButton" onclick="return Add_Employee(event)">Adauga</button>
-            </form>
+                <button id="submitButton">Adauga</button>
+            </div>
         </div>
         <div id="sortFilter">
             <div id="sortare">
@@ -90,23 +89,5 @@
                 <th>Sterge angajatul</th>
             </tr>
         </table>
-        <script  type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
-          import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyDHZpy8FJM8lUmUSv_gXqKoPvzpVVeHu5g",
-    authDomain: "content-management-syste-52d17.firebaseapp.com",
-    projectId: "content-management-syste-52d17",
-    storageBucket: "content-management-syste-52d17.appspot.com",
-    messagingSenderId: "34275485596",
-    appId: "1:34275485596:web:3f5151a2d8d75cea330a59",
-    measurementId: "G-JLWDPQBSPK"
-  };
-  const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
-        </script>
    </body>
 </html>

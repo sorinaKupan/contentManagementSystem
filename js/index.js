@@ -1,3 +1,4 @@
+var j;
 var months = [
     "ianuarie", "februarie", "martie", "aprilie", "mai",
     "iunie", "iulie", "august", "septembrie", "octombrie",
@@ -614,3 +615,6 @@ function filterPicture(event){
         }
 }
 
+function addEmployeeToFirebase(){
+
+}
