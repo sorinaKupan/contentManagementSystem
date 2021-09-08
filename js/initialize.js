@@ -15,10 +15,36 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const querySnapshot = await getDocs(collection(db, "employees"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-});
+
+function getAllData(){
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data()["data_nasterii"]);
+      var table = document.getElementById("tabelAngajati");
+      var j=1;
+      var row= table.insertRow(j);
+      row.id = doc.data()["nume"]+"row";
+      var cellNume = row.insertCell();
+      cellNume.setAttribute("class", "td-paddings");
+      cellNume.innerHTML = `<div id="icon-name"><img src="./images/search.png"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+      var cellPrenume = row.insertCell();
+      cellPrenume.setAttribute("class", "td-paddings");
+      cellPrenume.innerHTML = doc.data()["prenume"];
+      var cellEmail = row.insertCell();
+      cellEmail.setAttribute("class", "td-paddings");
+      cellEmail.innerHTML = doc.data()["email"];
+      var cellSex = row.insertCell();
+      cellSex.setAttribute("class", "td-paddings");
+      cellSex.innerHTML = doc.data()["sex"];
+      var cellDataNasterii = row.insertCell();
+      cellDataNasterii.setAttribute("class", "td-paddings");
+      var data_nasterii = doc.data()["data_nasterii"];
+      cellDataNasterii.innerHTML = data_nasterii;
+      var cellDelete = row.insertCell();
+      cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" onclick="return deleteEmployee(this,event)" id="${doc.data()["nume"]}"/>`;
+      j++;
+    });
+}
+getAllData();
 
 
   document.getElementById("submitButton").addEventListener("click", function(){
