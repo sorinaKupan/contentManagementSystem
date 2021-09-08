@@ -1,5 +1,5 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
-import {getFirestore, doc, setDoc, getDoc, getDocs, collection, deleteDoc, query, where} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
+import {getFirestore, doc, setDoc, getDoc, getDocs, collection, deleteDoc, query, where, orderBy} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
 
 //initialize firebase
 const firebaseConfig = {
@@ -202,3 +202,60 @@ document.getElementById("submitButton").addEventListener("click", function(){
           getAllData();
       }
   })
+
+//sortare dupa nume
+document.getElementById("selectSort").addEventListener("change", async function(){
+    var table = document.getElementById("tabelAngajati");
+    var sortValue = document.getElementById("selectSort").value;
+    if(sortValue=="nume") 
+    {
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+        var j=1;
+        const q = query(collection(db, "employees"), orderBy("nume", "asc"));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            var table = document.getElementById("tabelAngajati");
+            var row= table.insertRow(j);
+            row.id = doc.data()["nume"]+"row";
+            var cellNume = row.insertCell();
+            cellNume.setAttribute("class", "td-paddings");
+            cellNume.innerHTML = `<div id="icon-name"><img src="./images/search.png"  id="imageEmployee"/><p id="nameEmployee"> ${doc.data()["nume"]}</p></div>`;
+            var cellPrenume = row.insertCell();
+            cellPrenume.setAttribute("class", "td-paddings");
+            cellPrenume.innerHTML = doc.data()["prenume"];
+            var cellEmail = row.insertCell();
+            cellEmail.setAttribute("class", "td-paddings");
+            cellEmail.innerHTML = doc.data()["email"];
+            var cellSex = row.insertCell();
+            cellSex.setAttribute("class", "td-paddings");
+            cellSex.innerHTML = doc.data()["sex"];
+            var cellDataNasterii = row.insertCell();
+            cellDataNasterii.setAttribute("class", "td-paddings");
+            var data_nasterii = doc.data()["data_nasterii"];
+            var month = data_nasterii.split("-")[1];
+            var indexMonth;
+            if(month[0]==="0"){
+                indexMonth = month.split("0")[1]-1;
+            }
+            else{
+                indexMonth = month-1;
+            }
+            var birthDate = data_nasterii.split("-")[2] + " " + months[indexMonth] + " " + data_nasterii.split("-")[0];
+            cellDataNasterii.innerHTML = birthDate;
+            var cellDelete = row.insertCell();
+            cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" id="${doc.data()["nume"]}"/>`;
+  });
+    }else if(sortValue.value=="data-nasterii")
+    {
+    }else
+    {
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+        getAllData();
+    }
+});
