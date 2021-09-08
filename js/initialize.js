@@ -147,8 +147,7 @@ document.getElementById("submitButton").addEventListener("click", function(){
     {
         table.deleteRow(i);
     }
-    var j, i=1;
-    var arrayEmployee;
+    var j=1;
 
     const q = query(collection(db, "employees"), where("nume", "==", searchString));
     const querySnapshot = await getDocs(q);
@@ -191,3 +190,15 @@ document.getElementById("submitButton").addEventListener("click", function(){
           var re = /\S+@\S+\.\S+/;
           return re.test(email);
   }
+
+  //clear data from search bar
+  document.getElementById("query").addEventListener("change", function(){
+      if(document.getElementById("query").value==""){
+        var table = document.getElementById("tabelAngajati");
+        for (var i = table.childNodes[1].childElementCount-1; i >0; i--) 
+        {
+            table.deleteRow(i);
+        }
+          getAllData();
+      }
+  })
