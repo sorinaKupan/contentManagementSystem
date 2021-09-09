@@ -160,7 +160,7 @@ th {
     padding-right: 1rem;
 }
 
-#imageEmployee {
+.imageEmployee {
     margin-right: 10%;
     width: 30px;
     height: 30px;
@@ -247,17 +247,17 @@ th {
     }
 
     #tabelAngajati {
-        width: 10%;
+        width: 80%;
         margin-left: 0;
     }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
     #search-bar {
         width: 85%;
     }
 
     #adaugareAngajat {
-        margin-left: 25%;
+        margin-left: 20%;
     }
     
     #titluAdauga {
@@ -277,12 +277,17 @@ th {
     }
 
     #sortFilter {
-        margin-left: 15%;
+        margin-left: 5%;
     }
 
     #tabelAngajati {
-        width: 5%;
-    }
+        display: block;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
 }
 
 @media screen and (max-width: 450px) {
