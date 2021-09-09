@@ -115,7 +115,7 @@ h3{
 }
 
 #sortFilter {
-    margin-left: 35%;
+    margin-left: 10%;
     display: flex;
 }
 
@@ -124,7 +124,7 @@ h3{
 }
 
 #selectSort {
-    margin-top: 30%;
+    margin-top: 15%;
 }
 
 #filterBySex {
@@ -134,6 +134,21 @@ h3{
 #filterByPicture {
     margin-top: 43%;
     margin-left: 10%;
+}
+
+#filterByDate {
+    display: flex;
+    margin-left: 5%;
+}
+
+#textFilterDate {
+    width: 60%;
+    text-align: center;
+}
+
+#formFilterDate {
+    display: flex;
+    margin-top: 1%;
 }
 
 table, th, td {

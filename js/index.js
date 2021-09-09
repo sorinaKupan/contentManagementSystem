@@ -176,10 +176,78 @@ document.getElementById("selectSort").addEventListener("change", async function(
     var sortValue = document.getElementById("selectSort").value;
     if(sortValue == "nume") {
         removeData(table);
-        const q = query(collection(db, "employees"), orderBy("nume", "asc"));
+        const q = query(collection(db, "employees"), orderBy("nume", "desc"));
         const querySnapshot = await getDocs(q);
         putData(querySnapshot);
-    } else {
+
+    } else if(sortValue == "data-nasterii-asc") {
+        removeData(table);
+        const q = query(collection(db, "employees"));
+        const querySnapshot = await getDocs(q);
+        var momentDates = [];
+        var j = 0;
+        querySnapshot.forEach((doc) => {
+            var data = doc.data()["data_nasterii"];
+            momentDates[j] = new Date(data.split("-")[0], data.split("-")[1], data.split("-")[2]);
+            j++;
+        });         
+        var sortByDateAsc = function (lhs, rhs)  { return lhs > rhs ? 1 : lhs < rhs ? -1 : 0; };
+        momentDates.sort(sortByDateAsc);
+        var querySnapshot2;
+        for(var i=momentDates.length-1; i>=0;i--){
+            var year = momentDates[i].getUTCFullYear();
+            var month;
+            var day;
+            if( momentDates[i].getDate() <10){
+                day = "0" + momentDates[i].getDate();
+            } else {
+                day = momentDates[i].getDate();
+            }
+            if( momentDates[i].getMonth() <10){
+                month = "0" + momentDates[i].getDate();
+            } else {
+                month = momentDates[i].getMonth();
+            }
+            var dataFormat = year + "-" + month + "-" + day;
+            const q = query(collection(db, "employees"), where("data_nasterii", "==", dataFormat));
+            querySnapshot2 = await getDocs(q);
+            putData(querySnapshot2);
+        }
+
+    } else if(sortValue == "data-nasterii-desc") {
+        removeData(table);
+        const q = query(collection(db, "employees"));
+        const querySnapshot = await getDocs(q);
+        var momentDates = [];
+        var j = 0;
+        querySnapshot.forEach((doc) => {
+            var data = doc.data()["data_nasterii"];
+            momentDates[j] = new Date(data.split("-")[0], data.split("-")[1], data.split("-")[2]);
+            j++;
+        });       
+        var sortByDateDesc = function (lhs, rhs) { return lhs < rhs ? 1 : lhs > rhs ? -1 : 0; };
+        momentDates.sort(sortByDateDesc);
+        var querySnapshot2;
+        for(var i=momentDates.length-1; i>=0;i--){
+            var year = momentDates[i].getUTCFullYear();
+            var month;
+            var day;
+            if( momentDates[i].getDate() <10){
+                day = "0" + momentDates[i].getDate();
+            } else {
+                day = momentDates[i].getDate();
+            }
+            if( momentDates[i].getMonth() <10){
+                month = "0" + momentDates[i].getDate();
+            } else {
+                month = momentDates[i].getMonth();
+            }
+            var dataFormat = year + "-" + month + "-" + day;
+            const q = query(collection(db, "employees"), where("data_nasterii", "==", dataFormat));
+            querySnapshot2 = await getDocs(q);
+            putData(querySnapshot2);
+        }
+    }else {
         removeData(table);
         getAllData();
     }

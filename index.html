@@ -56,8 +56,9 @@
                 <form>
                     <select id="selectSort">
                         <option value="-" >-</option>
-                        <option value="nume">Nume</option>
-                        <option value="data-nasterii">Data nasterii</option>
+                        <option value="nume">Nume (descending)</option>
+                        <option value="data-nasterii-asc">Data nasterii (ascending)</option>
+                        <option value="data-nasterii-desc">Data nasterii (descending)</option>
                     </select>
                 </form>
             </div>
@@ -77,6 +78,19 @@
                         <option>are</option>
                     </select>
                 </form>
+                <div id="filterByDate">
+                    <h3 id="textFilterDate">Filtrare dupa data nasterii:</h3>
+                    <form id="formFilterDate">
+                        <div>
+                            <label for="start-date">Start date:</label>
+                            <input type="date" id="start-date"/>
+                        </div>
+                        <div>
+                            <label for="end-date">End date:</label>
+                            <input type="date" id="end-date"/>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <table id="tabelAngajati">
