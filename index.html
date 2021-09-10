@@ -13,15 +13,15 @@
             </form>
         </div>
         <div id="adaugareAngajat">
-            <h3 id="titluAdauga">Adauga un angajat</h3>
+            <h3 id="titluAdauga">Add an employee</h3>
             <div id="formAdaugare">
                 <div id="div1">
                     <div class="inputDiv">
-                        <label for="nume">Nume:</label>
+                        <label for="nume" id="labelNume">First name:</label>
                         <input type="text" id="nume" class="inputAngajat">
                     </div>
                     <div class="inputDiv">
-                        <label for="prenume">Prenume:</label>
+                        <label for="prenume" id="labelPrenume">Last name:</label>
                         <input type="text" id="prenume" class="inputAngajat">
                     </div>
                     <div class="inputDiv">
@@ -34,52 +34,56 @@
                         <label for="sex" id="labelSex">Sex:</label>
                         <select id="sex" class="inputAngajat">
                             <option value="-" selected>-</option>
-                            <option value="masculin">masculin</option>
-                            <option value="feminin">feminin</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
                         </select>
                     </div>
                     <div class="inputDiv inputDown">
-                        <label for="dataNasterii" id="labelDataNasterii">Data nasterii:</label>
+                        <label for="dataNasterii" id="labelDataNasterii">Birth date:</label>
                         <input type="date" id="dataNasterii" class="inputAngajat">
                     </div>
                     <div class="inputDiv inputDown">
-                        <label for="poza" id="labelPoza">Poza angajat:</label>
+                        <label for="poza" id="labelPoza">Employee's picture:</label>
                         <input type="file" id="poza" class="inputAngajat">
                     </div>
             </div>
-                <button id="submitButton">Adauga</button>
+                <button id="submitButton">Add</button>
             </div>
         </div>
         <div id="sortFilter">
+            
+            <div id="filtrare">
             <div id="sortare">
-                <h3>Sortare:</h3>
+                <h3>Sort:</h3>
                 <form>
                     <select id="selectSort">
                         <option value="-" >-</option>
-                        <option value="nume">Nume (descending)</option>
-                        <option value="data-nasterii-asc">Data nasterii (ascending)</option>
-                        <option value="data-nasterii-desc">Data nasterii (descending)</option>
+                        <option value="nume">First name (descending)</option>
+                        <option value="data-nasterii-asc">Birth date (ascending)</option>
+                        <option value="data-nasterii-desc">Birth date (descending)</option>
                     </select>
                 </form>
             </div>
-            <div id="filtrare">
-                <h3>Filtrare:</h3>
-                <form>
-                    <select id="filterBySex">
-                        <option>Sex</option>
-                        <option>feminin</option>
-                        <option>masculin</option>
-                    </select>
-                </form>
-                <form>
-                    <select id="filterByPicture">
-                        <option>Poza</option>
-                        <option>nu are</option>
-                        <option>are</option>
-                    </select>
-                </form>
+                <div id="filter1">
+                    <h3>Filter:</h3>
+                    <form>
+                        <select id="filterBySex">
+                            <option>Sex</option>
+                            <option>female</option>
+                            <option>male</option>
+                        </select>
+                    </form>
+                    <form>
+                        <select id="filterByPicture">
+                            <option>Picture</option>
+                            <option>Does not have</option>
+                            <option>It has</option>
+                        </select>
+                    </form>
+                </div>
+                </div>
                 <div id="filterByDate">
-                    <h3 id="textFilterDate">Filtrare dupa data nasterii:</h3>
+                    <h3 id="textFilterDate">Filter by birth date:</h3>
                     <form id="formFilterDate">
                         <div>
                             <label for="start-date">Start date:</label>
@@ -90,20 +94,19 @@
                             <input type="date" id="end-date"/>
                         </div>
                         <div>
-                            <button type="button" id="filterButton">Filtreaza</button>
+                            <button type="button" id="filterButton">Filter</button>
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
         <table id="tabelAngajati">
             <tr>
-                <th>Nume</th>
-                <th>Prenume</th>
+                <th>First name</th>
+                <th>Last name</th>
                 <th>Email</th>
                 <th>Sex</th>
-                <th>Data nasterii</th>
-                <th>Sterge angajatul</th>
+                <th>Birth date</th>
+                <th>Delete the employee</th>
             </tr>
         </table>
    </body>

@@ -15,9 +15,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 var months = [
-    "ianuarie", "februarie", "martie", "aprilie", "mai",
-    "iunie", "iulie", "august", "septembrie", "octombrie",
-    "noiembrie", "decembrie"
+    "january", "february", "march", "april", "may",
+    "june", "july", "august", "september", "october",
+    "november", "december"
 ];  
 var table = document.getElementById("tabelAngajati");
 
@@ -98,20 +98,20 @@ document.getElementById("submitButton").addEventListener("click", function() {
         poza_angajat = "noPic.jpg";
     }
     if(numeV == "") {
-        alert("Completati numele");
+        alert("Fill in the first name");
     } else {
         if(prenumeV == "") {
-            alert("Completati prenumele");
+            alert("Fill in the last name");
         } else {
             if(emailV == "") {
-                alert("Completati email-ul");
+                alert("Fill in the email");
             } else {
                 if(validateEmail(emailV)) {
                     if(sexV == "-") {
-                        alert("Alegeti sex-ul");
+                        alert("Pick the sex");
                     } else {
                         if(dataNasteriiV == "") {
-                            alert("Alegeti data nasterii");
+                            alert("Pick the birth date");
                         } else {
                             var birthDate = new Date(dataNasteriiV);
                             var month_diff = Date.now() - birthDate.getTime();  
@@ -136,12 +136,12 @@ document.getElementById("submitButton").addEventListener("click", function() {
                                 removeData(table);
                                 getAllData();
                             } else {
-                                alert("Varsta trebuie sa fie mai mare sau egala cu 16");
+                                alert("The age has to be greater or equal to 16");
                             }
                         }
                     }
                 } else {
-                    alert("Introduceti o adresa de email valida");
+                    alert("Fill in with a valid email");
                 }
             }
         }
@@ -292,12 +292,12 @@ document.getElementById("filterByPicture").addEventListener("change", async func
 });
 
 // filter by birth date
-document.getElementById("filterButton").addEventListener("click", async function(){
+document.getElementById("filterButton").addEventListener("click", async function() {
     var startValue = document.getElementById("start-date").value;
     var endValue = document.getElementById("end-date").value;
-    if(startValue == "" || endValue == ""){
-        alert("Trebuie sa alegi atat o data de inceput cat si una de sfarsit");
-    }else{
+    if(startValue == "" || endValue == "") {
+        alert("You have to pick a start date and an end date");
+    } else {
         var startValue = document.getElementById("start-date").value;
         var startDate = new Date(startValue.split("-")[0], startValue.split("-")[1], startValue.split("-")[2]);
         var endValue = document.getElementById("end-date").value;
@@ -305,13 +305,13 @@ document.getElementById("filterButton").addEventListener("click", async function
         removeData(table);
         const queryS = await getDocs(collection(db, "employees"));
         var j=1;
-        queryS.forEach((doc) =>{
+        queryS.forEach((doc) => {
             var birthDate = doc.data()["data_nasterii"];
             var year = birthDate.split("-")[0];
             var month = birthDate.split("-")[1];
             var day = birthDate.split("-")[2];
             var date = new Date(year, month, day);
-            if(date<=endDate && date>=startDate){
+            if(date<=endDate && date>=startDate) {
                 var row= table.insertRow(j);
                 row.id = doc.data()["nume"]+"row";
                 var cellNume = row.insertCell();
@@ -346,10 +346,11 @@ document.getElementById("filterButton").addEventListener("click", async function
     }
 });
 
-document.getElementById("formFilterDate").addEventListener("change", function(){
+// if the filter is empty, show all the data
+document.getElementById("formFilterDate").addEventListener("change", function() {
     var startValue = document.getElementById("start-date").value;
     var endValue = document.getElementById("end-date").value;
-    if(startValue == "" && endValue == ""){
+    if(startValue == "" && endValue == "") {
         removeData(table);
         getAllData();
     }
