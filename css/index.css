@@ -151,6 +151,14 @@ h3{
     margin-top: 1%;
 }
 
+#filterButton {
+    border: 1px solid black;
+    background-color: #6B7AA1;
+    margin-top: 30%;
+    margin-left: 5%;
+    padding: 2px;
+}
+
 table, th, td {
     border: 2px solid #11324D;
     border-collapse: collapse;

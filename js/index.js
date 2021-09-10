@@ -290,3 +290,67 @@ document.getElementById("filterByPicture").addEventListener("change", async func
         getAllData();
     }
 });
+
+// filter by birth date
+document.getElementById("filterButton").addEventListener("click", async function(){
+    var startValue = document.getElementById("start-date").value;
+    var endValue = document.getElementById("end-date").value;
+    if(startValue == "" || endValue == ""){
+        alert("Trebuie sa alegi atat o data de inceput cat si una de sfarsit");
+    }else{
+        var startValue = document.getElementById("start-date").value;
+        var startDate = new Date(startValue.split("-")[0], startValue.split("-")[1], startValue.split("-")[2]);
+        var endValue = document.getElementById("end-date").value;
+        var endDate = new Date(endValue.split("-")[0], endValue.split("-")[1], endValue.split("-")[2])
+        removeData(table);
+        const queryS = await getDocs(collection(db, "employees"));
+        var j=1;
+        queryS.forEach((doc) =>{
+            var birthDate = doc.data()["data_nasterii"];
+            var year = birthDate.split("-")[0];
+            var month = birthDate.split("-")[1];
+            var day = birthDate.split("-")[2];
+            var date = new Date(year, month, day);
+            if(date<=endDate && date>=startDate){
+                var row= table.insertRow(j);
+                row.id = doc.data()["nume"]+"row";
+                var cellNume = row.insertCell();
+                cellNume.setAttribute("class", "td-paddings");
+                cellNume.innerHTML = `<div id="icon-name"><img src="./images/${doc.data()["poza"]}"  class="imageEmployee"/><p> ${doc.data()["nume"]}</p></div>`;
+                var cellPrenume = row.insertCell();
+                cellPrenume.setAttribute("class", "td-paddings");
+                cellPrenume.innerHTML = doc.data()["prenume"];
+                var cellEmail = row.insertCell();
+                cellEmail.setAttribute("class", "td-paddings");
+                cellEmail.innerHTML = doc.data()["email"];
+                var cellSex = row.insertCell();
+                cellSex.setAttribute("class", "td-paddings");
+                cellSex.innerHTML = doc.data()["sex"];
+                var cellDataNasterii = row.insertCell();
+                cellDataNasterii.setAttribute("class", "td-paddings");
+                var data_nasterii = doc.data()["data_nasterii"];
+                var month = data_nasterii.split("-")[1];
+                var indexMonth;
+                if(month[0] === "0") {
+                    indexMonth = month.split("0")[1]-1;
+                } else {
+                    indexMonth = month-1;
+                }
+                var birthDate = data_nasterii.split("-")[2] + " " + months[indexMonth] + " " + data_nasterii.split("-")[0];
+                cellDataNasterii.innerHTML = birthDate;
+                var cellDelete = row.insertCell();
+                cellDelete.innerHTML = `<img src="./images/x.png" class="recycleBin" id="${doc.data()["nume"]}"/>`;
+                j++;
+            }
+        });
+    }
+});
+
+document.getElementById("formFilterDate").addEventListener("change", function(){
+    var startValue = document.getElementById("start-date").value;
+    var endValue = document.getElementById("end-date").value;
+    if(startValue == "" && endValue == ""){
+        removeData(table);
+        getAllData();
+    }
+});
